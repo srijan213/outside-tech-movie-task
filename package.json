@@ -5,7 +5,8 @@
   "author": "srijan213 <srijanmanandhar12@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve --config webpack.dev.config.ts"
+    "start": "webpack serve --config webpack.dev.config.ts",
+    "build": "webpack --config webpack.prod.config.ts"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -26,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
     "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^6.2.0",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.24.0",
@@ -33,6 +35,7 @@
     "eslint-webpack-plugin": "^3.0.1",
     "fork-ts-checker-webpack-plugin": "^6.3.2",
     "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.2.0",
     "node-sass": "^6.0.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
