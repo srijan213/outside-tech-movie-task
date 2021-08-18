@@ -5,6 +5,7 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import StyleLintPlugin from "stylelint-webpack-plugin";
 
 const config: webpack.Configuration = {
   mode: "production",
@@ -58,6 +59,13 @@ const config: webpack.Configuration = {
       extensions: ["js", "jsx", "ts", "tsx"],
     }),
     new MiniCssExtractPlugin(),
+    new StyleLintPlugin({
+      configFile: ".stylelintrc",
+      context: "src",
+      files: ["**/*.{css,scss}"],
+      failOnError: false,
+      quiet: false,
+    }),
     new CleanWebpackPlugin(),
   ],
 };

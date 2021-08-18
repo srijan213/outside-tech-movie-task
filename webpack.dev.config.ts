@@ -4,6 +4,7 @@ import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-serv
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
+import StyleLintPlugin from "stylelint-webpack-plugin";
 
 type MyWebpackConfig = webpack.Configuration & {
   devServer?: WebpackDevServerConfiguration;
@@ -58,6 +59,13 @@ const config: MyWebpackConfig = {
     }),
     new ESLintPlugin({
       extensions: ["js", "jsx", "ts", "tsx"],
+    }),
+    new StyleLintPlugin({
+      configFile: ".stylelintrc",
+      context: "src",
+      files: ["**/*.{css,scss}"],
+      failOnError: false,
+      quiet: false,
     }),
   ],
   devtool: "inline-source-map",
