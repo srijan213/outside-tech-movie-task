@@ -2,6 +2,7 @@ import path from "path";
 import webpack from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 type MyWebpackConfig = webpack.Configuration & {
   devServer?: WebpackDevServerConfiguration;
@@ -43,6 +44,9 @@ const config: MyWebpackConfig = {
       template: "src/index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      async: false,
+    }),
   ],
   devtool: "inline-source-map",
   devServer: {
