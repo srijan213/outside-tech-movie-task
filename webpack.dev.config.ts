@@ -1,8 +1,13 @@
 import path from "path";
 import webpack from "webpack";
+import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
-const config: webpack.Configuration = {
+type MyWebpackConfig = webpack.Configuration & {
+  devServer?: WebpackDevServerConfiguration;
+};
+
+const config: MyWebpackConfig = {
   mode: "development",
   output: {
     publicPath: "/",
