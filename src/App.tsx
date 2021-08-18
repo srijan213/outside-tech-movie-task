@@ -1,12 +1,10 @@
-import React from "react";
-import "./App.scss";
+import React from 'react'
+import './App.scss'
 
-const App: React.FC = () => {
-  return (
+const App: React.FC = () => (
     <div className="app">
-      <h2>Movie List for Outside Tech</h2>
+        <h2>Movie List for Outside Tech</h2>
     </div>
-  );
-};
+)
 
-export default App;
+export default App
