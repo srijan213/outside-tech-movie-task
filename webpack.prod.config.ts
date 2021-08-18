@@ -57,6 +57,7 @@ const config: webpack.Configuration = {
     new ESLintPlugin({
       extensions: ["js", "jsx", "ts", "tsx"],
     }),
+    new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
   ],
 };
