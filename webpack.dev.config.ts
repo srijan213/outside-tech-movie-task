@@ -3,6 +3,7 @@ import webpack from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ESLintPlugin from "eslint-webpack-plugin";
 
 type MyWebpackConfig = webpack.Configuration & {
   devServer?: WebpackDevServerConfiguration;
@@ -46,6 +47,9 @@ const config: MyWebpackConfig = {
     new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin({
       async: false,
+    }),
+    new ESLintPlugin({
+      extensions: ["js", "jsx", "ts", "tsx"],
     }),
   ],
   devtool: "inline-source-map",

@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="app">
       <h2>Movie List for Outside Tech</h2>
