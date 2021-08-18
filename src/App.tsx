@@ -1,7 +1,12 @@
 import React from "react";
+import "./App.scss";
 
 const App = () => {
-  return <h2>Movie List for Outside Tech</h2>;
+  return (
+    <div className="app">
+      <h2>Movie List for Outside Tech</h2>
+    </div>
+  );
 };
 
 export default App;
