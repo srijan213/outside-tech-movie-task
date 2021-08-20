@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NoRating } from '../../common/NoRating'
 import { IMAGE_URL_PREFIX } from '../../constants'
 import { SearchMovieResult } from '../../types/SearchMovie'
@@ -14,6 +14,8 @@ const isRatingAvailable = (rating: number, totalVotes: number): boolean => {
 }
 
 export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
+    const [showDetails, setShowDetails] = useState(false)
+
     const {
         original_title: originalTitle,
         poster_path: posterPath,
@@ -21,9 +23,15 @@ export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
         release_date: releaseDate,
         vote_average: rating,
         vote_count: totalVotes,
+        overview,
     } = searchMovieData
+
     return (
-        <div className="movie">
+        <div
+            className="movie"
+            onClick={() => setShowDetails(!showDetails)}
+            role="presentation"
+        >
             <div className="left">
                 <img
                     src={`${IMAGE_URL_PREFIX}${posterPath}`}
@@ -45,8 +53,8 @@ export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
                         votes
                     </div>
                 )}
-                <div className="info" />
             </div>
+            {showDetails ? <div className="info">{overview}</div> : null}
         </div>
     )
 }

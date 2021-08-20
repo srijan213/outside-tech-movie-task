@@ -4,22 +4,17 @@
 	border-radius: .8rem;
 	color: $primary;
 	cursor: pointer;
-	display: flex;
-	justify-content: space-around;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(1, 1fr);
 	margin: 1rem auto;
 	max-width: 600px;
 	padding: 1rem;
-	.left {
-		width: 40%;
-
-	}
 	
 	.left img {
 		border-radius: 1rem;
-		height: 250px;
-	}
-	.right {
-		flex: 1;
+		height: 200px;
+		margin: 0 auto;
 	}
 
 	.title {
@@ -30,5 +25,11 @@
 
 	.release-date, .rating {
 		font-size: 0.9rem;
+	}
+
+	.info {
+		grid-column: span 2;
+		margin-top: 2rem;
+		padding: 1rem;
 	}
 }
