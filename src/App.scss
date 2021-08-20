@@ -1,11 +1,8 @@
-@import './scss/reset';
-@import './scss/fonts';
-
 .app {
     background-color: antiquewhite;
     font-family: $font-family;
     height: 100vh;
     h2 {
-        color: blue;
+        color: $random;
     }
 }

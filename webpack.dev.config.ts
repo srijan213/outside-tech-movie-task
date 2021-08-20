@@ -34,7 +34,19 @@ const config: MyWebpackConfig = {
             },
             {
                 test: /\.(s(a|c)ss)$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: [
+                                path.resolve(__dirname, './src/scss/**/*.scss'),
+                            ],
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,

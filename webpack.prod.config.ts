@@ -34,7 +34,19 @@ const config: webpack.Configuration = {
             },
             {
                 test: /\.(s(a|c)ss)$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: [
+                                path.resolve(__dirname, './src/scss/**/*.scss'),
+                            ],
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
