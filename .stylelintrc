@@ -6,5 +6,8 @@
   ],
   "rules": {
     "color-named": "always-where-possible",
+    "selector-no-qualifying-type": [ true, {
+      "ignore": [ "attribute" ]
+    } ]
   }
 }
