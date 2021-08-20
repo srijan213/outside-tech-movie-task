@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { NoRating } from '../../common/NoRating'
 import { IMAGE_URL_PREFIX } from '../../constants'
 import { SearchMovieResult } from '../../types/SearchMovie'
@@ -15,7 +15,8 @@ const isRatingAvailable = (rating: number, totalVotes: number): boolean => {
 
 export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
     const [showDetails, setShowDetails] = useState(false)
-
+    const [infoHeight, setInfoHeight] = useState('0px')
+    const inputEl = useRef<HTMLDivElement>(null)
     const {
         original_title: originalTitle,
         poster_path: posterPath,
@@ -26,12 +27,17 @@ export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
         overview,
     } = searchMovieData
 
+    const toggle = (): void => {
+        setShowDetails(!showDetails)
+        if (inputEl && inputEl.current) {
+            setInfoHeight(
+                showDetails ? '0px' : `${inputEl.current.scrollHeight}px`
+            )
+        }
+    }
+
     return (
-        <div
-            className="movie"
-            onClick={() => setShowDetails(!showDetails)}
-            role="presentation"
-        >
+        <div className="movie" onClick={toggle} role="presentation">
             <div className="left">
                 <img
                     src={`${IMAGE_URL_PREFIX}${posterPath}`}
@@ -54,7 +60,16 @@ export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
                     </div>
                 )}
             </div>
-            {showDetails ? <div className="info">{overview}</div> : null}
+            <br />
+            <div
+                ref={inputEl}
+                style={{
+                    maxHeight: `${infoHeight}`,
+                }}
+                className="info"
+            >
+                {overview}
+            </div>
         </div>
     )
 }

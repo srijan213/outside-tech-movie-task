@@ -29,7 +29,8 @@
 
 	.info {
 		grid-column: span 2;
-		margin-top: 2rem;
-		padding: 1rem;
+		max-height: 0%;
+		overflow: hidden;
+		transition: max-height .5s ease-in;
 	}
 }
