@@ -6,7 +6,8 @@
 	cursor: pointer;
 	display: flex;
 	justify-content: space-around;
-	margin: 1rem;
+	margin: 1rem auto;
+	max-width: 600px;
 	padding: 1rem;
 	.left {
 		width: 40%;

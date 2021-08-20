@@ -1,8 +1,9 @@
 import React from 'react'
 import { useFetch } from './hooks/useFetch'
+import { MovieList } from './components/MovieList'
 
 import './App.scss'
-import { MovieList } from './components/MovieList'
+import Container from './common/Container'
 
 const App: React.FC = () => {
     const { status, data: searchMovieList } = useFetch()
@@ -13,8 +14,12 @@ const App: React.FC = () => {
     }
     return (
         <div className="app">
-            <h2>Movie List for Outside Tech</h2>
-            <MovieList searchMovieList={searchMovieList} />
+            <Container>
+                <h2 style={{ textAlign: 'center' }}>
+                    Movie List for Outside Tech
+                </h2>
+                <MovieList searchMovieList={searchMovieList} />
+            </Container>
         </div>
     )
 }
