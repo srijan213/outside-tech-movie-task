@@ -1,0 +1,33 @@
+.movie {
+	align-items: center;
+	background-color: $mild-white;
+	border-radius: .8rem;
+	color: $primary;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-around;
+	margin: 1rem;
+	padding: 1rem;
+	.left {
+		width: 40%;
+
+	}
+	
+	.left img {
+		border-radius: 1rem;
+		height: 250px;
+	}
+	.right {
+		flex: 1;
+	}
+
+	.title {
+		font-size: 1.2rem;
+		font-weight: bold;
+		margin-bottom: 2rem;
+	}
+
+	.release-date, .rating {
+		font-size: 0.9rem;
+	}
+}
