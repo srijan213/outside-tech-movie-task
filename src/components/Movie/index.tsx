@@ -59,6 +59,9 @@ export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
                         votes
                     </div>
                 )}
+                <a href="#!" className="more-info">
+                    Click for more info
+                </a>
             </div>
             <br />
             <div

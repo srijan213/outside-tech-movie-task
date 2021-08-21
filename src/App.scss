@@ -1,11 +1,11 @@
 .app {
     align-items: center;
-    background-color: $primary;
+    background-color: ivory;
     display: flex;
     flex-direction: column;
     font-family: $font-family;
     justify-content: center;
     h2 {
-        color: $mild-yellow;
+        color: $primary;
     }
 }

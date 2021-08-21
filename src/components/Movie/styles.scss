@@ -10,6 +10,18 @@
 	margin: 1rem auto;
 	max-width: 600px;
 	padding: 1rem;
+	transition: all .3s ease-in;
+
+	&:hover {
+		box-shadow: -8px 7px 2rem -18px rgba(0,0,0,0.78);
+	}
+
+	.left {
+		border-right: 1px solid rgba(155, 108, 108, 0.6) ;
+		width: 80%;
+	}
+
+
 	
 	.left img {
 		border-radius: 1rem;
@@ -28,9 +40,12 @@
 	}
 
 	.info {
+		font-size: .9rem;
 		grid-column: span 2;
 		max-height: 0%;
 		overflow: hidden;
+		padding: 0 1rem;
 		transition: max-height .5s ease-in;
+		width: 100%;
 	}
 }
