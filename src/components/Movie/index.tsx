@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { NoRating } from '../../common/NoRating'
 import { IMAGE_URL_PREFIX } from '../../constants'
 import { SearchMovieResult } from '../../types/SearchMovie'
+import Modal from '../Modal'
 
 import './styles.scss'
 
@@ -16,6 +17,7 @@ const isRatingAvailable = (rating: number, totalVotes: number): boolean => {
 export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
     const [showDetails, setShowDetails] = useState(false)
     const [infoHeight, setInfoHeight] = useState('0px')
+    const [isOpen, setIsOpen] = useState(false)
     const inputEl = useRef<HTMLDivElement>(null)
     const {
         original_title: originalTitle,
@@ -59,9 +61,16 @@ export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
                         votes
                     </div>
                 )}
-                <a href="#!" className="more-info">
+                <a
+                    href="#!"
+                    className="more-info"
+                    onClick={() => setIsOpen(true)}
+                >
                     Click for more info
                 </a>
+                <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+                    Fancy Modal
+                </Modal>
             </div>
             <br />
             <div
