@@ -1,9 +1,29 @@
 .modal {
-	background-color: white;
+	background-color: $primary;
+	color: $mild-yellow;
 	left: 50%;
 	padding: 50px;
 	position: fixed;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 10;
+
+	.close {
+		background-color: $mild-white;
+		border-radius: 50%;
+		color: $accent;
+		cursor: pointer;
+		display: inline-block;
+		display: block;
+		height: 25px;
+		margin-left: auto;
+		text-align: center;
+		transition: all .3s ease-in-out;
+		width: 25px;
+
+	}
+	.close:hover {
+		background-color: $accent;
+		color: $mild-white;
+	}
 }

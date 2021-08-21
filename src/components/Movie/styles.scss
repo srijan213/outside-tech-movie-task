@@ -48,4 +48,15 @@
 		transition: max-height .5s ease-in;
 		width: 100%;
 	}
+
+	.more-info {
+		font-size: 0.8rem;
+		margin: 1rem 0;
+	}
+	
+	.more-info:hover {
+		color: $primary;
+		font-weight: bold;
+		text-decoration: underline;
+	}
 }

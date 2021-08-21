@@ -2,16 +2,14 @@ import React, { useState, useRef } from 'react'
 import { NoRating } from '../../common/NoRating'
 import { IMAGE_URL_PREFIX } from '../../constants'
 import { SearchMovieResult } from '../../types/SearchMovie'
+import { isRatingAvailable } from '../../utils/isRatingAvailable'
+import Info from '../Info'
 import Modal from '../Modal'
 
 import './styles.scss'
 
 interface MovieProps {
     searchMovieData: SearchMovieResult
-}
-
-const isRatingAvailable = (rating: number, totalVotes: number): boolean => {
-    return rating === 0 && totalVotes < 5
 }
 
 export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
@@ -22,11 +20,14 @@ export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
     const {
         original_title: originalTitle,
         poster_path: posterPath,
-        id: movieId,
+        backdrop_path: backdropPath,
         release_date: releaseDate,
         vote_average: rating,
         vote_count: totalVotes,
         overview,
+        adult,
+        original_language: originalLanguage,
+        popularity,
     } = searchMovieData
 
     const toggle = (): void => {
@@ -36,6 +37,14 @@ export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
                 showDetails ? '0px' : `${inputEl.current.scrollHeight}px`
             )
         }
+    }
+
+    const handleInfoClick = (
+        e: React.MouseEvent<HTMLDivElement, MouseEvent>
+    ): void => {
+        e.preventDefault()
+        e.stopPropagation()
+        setIsOpen(true)
     }
 
     return (
@@ -53,7 +62,7 @@ export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
                 <div className="release-date">
                     <b>Release Date:</b> {releaseDate}
                 </div>
-                {!isRatingAvailable ? (
+                {!isRatingAvailable(rating, totalVotes) ? (
                     <NoRating />
                 ) : (
                     <div className="rating">
@@ -61,15 +70,25 @@ export const Movie: React.FC<MovieProps> = ({ searchMovieData }) => {
                         votes
                     </div>
                 )}
-                <a
-                    href="#!"
+                <div
+                    // href="#!"
+                    role="presentation"
                     className="more-info"
-                    onClick={() => setIsOpen(true)}
+                    onClick={handleInfoClick}
                 >
                     Click for more info
-                </a>
+                </div>
                 <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-                    Fancy Modal
+                    <Info
+                        adult={adult}
+                        backdropPath={backdropPath}
+                        originalLanguage={originalLanguage}
+                        originalTitle={originalTitle}
+                        overview={overview}
+                        popularity={popularity}
+                        rating={rating}
+                        totalVotes={totalVotes}
+                    />
                 </Modal>
             </div>
             <br />

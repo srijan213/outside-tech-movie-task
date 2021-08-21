@@ -14,10 +14,17 @@ const Modal: React.FC<ModalProps> = ({ open, children, onClose }) => {
     }
     return ReactDOM.createPortal(
         <>
-            <div className="modal">
-                <button type="button" onClick={onClose}>
-                    Close Modal
-                </button>
+            <div
+                role="presentation"
+                className="modal"
+                onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                }}
+            >
+                <div className="close" role="presentation" onClick={onClose}>
+                    x
+                </div>
                 {children}
             </div>
         </>,
